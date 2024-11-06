@@ -4,7 +4,7 @@ site_dir: '../../generated/pt'
 
 theme:
     name: material
-    # custom_dir: '../../overrides/'
+    custom_dir: '../../overrides/'
     logo: assets/images/logo.svg
     favicon: assets/images/favicon.ico
     language: pt

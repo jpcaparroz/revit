@@ -4,3 +4,5 @@ python-dotenv==1.0.1
 distutils-strtobool==0.1.0
 transformers==4.46.2
 mkdocs-material==9.5.44
+tensorflow==2.18.0
+tf_keras==2.18.0
