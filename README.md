@@ -4,7 +4,7 @@ Revit: The document AI
 ---
 
 ##### Start front
-    npm start --prefix ./front/revit
+    npm run dev
 
 
 ##### Start back
