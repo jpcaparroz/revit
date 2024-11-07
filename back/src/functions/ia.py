@@ -1,5 +1,6 @@
+from transformers import AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer
 from transformers import pipeline
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 
 class RevitIa:
