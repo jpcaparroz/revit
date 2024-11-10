@@ -8,3 +8,6 @@ tensorflow==2.18.0
 tf_keras==2.18.0
 PyPDF2==3.0.1
 datasets==3.1.0
+python-multipart==0.0.17
+evaluate==0.4.3
+scikit-learn==1.5.2

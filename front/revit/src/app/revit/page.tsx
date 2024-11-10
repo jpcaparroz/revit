@@ -2,8 +2,14 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 
-export default function Revit() {
+export default function RevitPage() {
   return (
-    <Link href={"/revit-upload"}>oi</Link>
+    <div className="revit">
+      <h1>Revit Document AI</h1>
+      <p>Welcome to the document analysis section.</p>
+      <Link href="/revit-upload" className="upload-button">
+        Upload Document
+      </Link>
+    </div>
   );
 }
