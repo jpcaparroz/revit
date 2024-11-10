@@ -7,3 +7,4 @@ mkdocs-material==9.5.44
 tensorflow==2.18.0
 tf_keras==2.18.0
 PyPDF2==3.0.1
+datasets==3.1.0

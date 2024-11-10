@@ -1,11 +1,14 @@
+from datetime import datetime
 from pathlib import Path
+import logging
+import sys
 import os
 
 from strtobool import strtobool
 
 from dotenv import load_dotenv
 
-
+FORMAT: str = '%(asctime)s  - %(levelname)s - %(message)s'
 ENV_PATH = Path(f'{os.getcwd()}/.env')
 load_dotenv(dotenv_path=ENV_PATH, override=True)
 
@@ -24,3 +27,46 @@ def get_env_fastapi_config() -> dict:
         "workers": int(os.getenv('FASTAPI_WORKERS'))
     }
     return config
+
+
+def set_current_directory() -> str:
+    """Get current directory of current .py execution
+
+    Returns:
+        str: The path
+    """
+
+    directory: str = ''
+    
+    # determine if application is a script file or frozen exe
+    if getattr(sys, 'frozen', False):
+        # Running as a PyInstaller bundle
+        application_path = os.path.dirname(sys.executable)
+        directory = os.path.abspath(os.path.join(application_path))
+    elif __file__:
+        # Running as a standard Python script
+        application_path = os.path.dirname(__file__)
+        directory = os.path.abspath(os.path.join(application_path, '..'))
+
+    # set current directory
+    os.chdir(directory)
+
+    return directory
+
+
+# Create log folder
+try: 
+    os.mkdir(set_current_directory() + '/log/')
+except:
+    pass
+
+
+# Logging config/call
+logging.basicConfig(filename=set_current_directory() + '/log/LOG_' + datetime.now().strftime("%Y%m") + '.log', 
+                    filemode='a', 
+                    format=FORMAT,
+                    level='INFO',
+                    encoding='utf-8')
+
+
+add_log = logging.getLogger(__name__)
