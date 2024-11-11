@@ -1,22 +1,58 @@
+import time
 from typing import List
 from io import BytesIO
 
 from fastapi import HTTPException
 from fastapi import UploadFile
 from fastapi import APIRouter
-from fastapi import Depends
 from fastapi import status
 
 from schemas.generic_schema import HttpDetail
+from schemas.revit_schema import RevitBase
 from functions.pdf_reader import Pdf
+from functions.ai_summarize import RevitAi
 
 
 router = APIRouter()
 
 
-@router.get("/", status_code=status.HTTP_200_OK)
-async def get_hello_world():
-    return HttpDetail(detail='Hello World!')
+@router.post("/", status_code=status.HTTP_200_OK, response_model=RevitBase)
+async def summarize(file: UploadFile):
+    start_time = time.time()  # Record the start time
+
+    try:
+        file_read = BytesIO(await file.read())
+        pdf_reader = Pdf(file_read)
+        text: str = pdf_reader.read_pdf()
+    except:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail='Error on file read')
+        
+    try:
+        revit = RevitAi()
+        summarize_result = revit.summarize(text)
+    except:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail='Error on summarize PDF')
+        
+    end_time = time.time()  # Record the end time
+    # Calculate the duration
+    duration_seconds = int(end_time - start_time)
+    hours, remainder = divmod(duration_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    duration = f"{hours:02}:{minutes:02}:{seconds:02}"
+    
+    revit_dict = {
+        "file_name": str(file.filename),
+        "file_content": text,
+        "file_words_count": len(text),
+        "summary": summarize_result,
+        "summarize_duration": duration,
+        "summarize_words_count": len(summarize_result)
+    }
+    revit_schema = revit.revit_message(RevitBase(**revit_dict))
+        
+    return revit_schema
 
 
 @router.post("/read_pdf", status_code=status.HTTP_200_OK)
