@@ -1,6 +1,8 @@
 site_name: 'Revit'
+site_description: The loopdevs document ai
 docs_dir: '../../docs/pt'
 site_dir: '../../generated/pt'
+site_url: https://jpcaparroz.github.io/revit/
 
 theme:
     name: material
@@ -9,12 +11,61 @@ theme:
     favicon: assets/images/favicon.ico
     language: pt
 
-# extra_css:
-#   - assets/stylesheets/yesplan.css
+    palette:
+      - media: "(prefers-color-scheme: dark)"
+        primary: black
+        accent: teal
+        scheme: slate
+        toggle:
+          icon: material/lightbulb-auto
+          name: Switch to light mode
+      - media: "(prefers-color-scheme: light)"
+        primary: black
+        accent: teal
+        scheme: default
+        toggle:
+          icon: material/lightbulb
+          name: Switch to dark mode
+      - media: "(prefers-color-scheme: dark)"
+        primary: black
+        scheme: slate
+        toggle:
+          icon: material/lightbulb-outline
+          name: Switch to system preference
+
+    features:
+    - content.code.annotate
+    - content.code.copy
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
 
 extra:
-  alternate:  
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jpcaparroz
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/joaooo0/
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@joao.caparroz
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jo%C3%A3o-pedro-dias-caparroz-2b19a1161/
 
+  alternate:  
       # Switch to English
     - name: English
       link: /en/
@@ -25,10 +76,37 @@ extra:
       link: /pt/
       lang: pt
 
-
 plugins:
   - search:                                         
       lang: pt
 
-nav:
-- Welcome: index.md
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - footnotes
+  - pymdownx.details
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/jpcaparroz"  target="_blank" rel="noopener">Loopdevs</a>
