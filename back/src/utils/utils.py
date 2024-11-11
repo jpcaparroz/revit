@@ -1,6 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 import logging
+import time
 import sys
 import os
 
@@ -27,6 +28,20 @@ def get_env_fastapi_config() -> dict:
         "workers": int(os.getenv('FASTAPI_WORKERS'))
     }
     return config
+
+
+def process_timer(process_func, *args, **kwargs):
+    start_time = time.time()  # Record the start time
+    process_func(*args, **kwargs)  # Run the specified process
+    end_time = time.time()  # Record the end time
+
+    # Calculate the duration
+    duration_seconds = int(end_time - start_time)
+    hours, remainder = divmod(duration_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    # Return the formatted duration
+    return f"{hours:02}:{minutes:02}:{seconds:02}"
 
 
 def set_current_directory() -> str:
