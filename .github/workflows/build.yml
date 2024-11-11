@@ -1,0 +1,32 @@
+name: Build Github Pages (Revit Documentation)
+
+on:
+  push:
+    branches: 
+    - main
+
+jobs:
+  deploy:
+    name: Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.0"
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: pip install -r ./docs/requirements-mkdocs.txt
+
+      - name: Actions Cache
+        uses: actions/cache@v4.1.1
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+
+      - name: MKDOCS Deploy
+        run: mkdocs gh-deploy --force --config-file ./docs/config/pt/mkdocs.yml
