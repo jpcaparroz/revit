@@ -1,6 +1,8 @@
+'use client'
+
 import Image from "next/image";
-import "./assets/css/index.css";
 import Link from "next/link";
+import "./page.css";
 
 export default function HomePage() {
 
@@ -11,8 +13,6 @@ export default function HomePage() {
         <h1 className="title">REVIT</h1>
         <p className="sub-title">loopdevs documents ai</p>
       </div>
-
-      <br />
 
       <div className="continue-box">
         <Link href="/pages/revit">
@@ -28,7 +28,8 @@ export default function HomePage() {
         <Link href={"/pages/revit"} className="continue">
           click to continue
         </Link>
-      </div>
+      </div> 
     </div>
+
   );
 }

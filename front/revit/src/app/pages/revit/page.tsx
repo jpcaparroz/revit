@@ -1,17 +1,17 @@
 import Image from "next/image";
-import "../../assets/css/revit.css";
+import "./page.css";
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 export default function RevitPage() {
-	const router = useRouter()
+	// const router = useRouter()
 
-	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = event.target.files ? event.target.files[0] : null;
-		if (file) {
-			router.push("/pages/revit-upload");
-		}
-	};
+	// const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	// 	const file = event.target.files ? event.target.files[0] : null;
+	// 	if (file) {
+	// 		router.push("/pages/revit-upload");
+	// 	}
+	// };
 
 	return (
 		<div className="home">
@@ -30,7 +30,7 @@ export default function RevitPage() {
 					type="file"
 					id="file-upload"
 					accept=".pdf"
-					onChange={handleFileChange}
+					// onChange={handleFileChange}
 					style={{ display: "none" }}
 				/>
 				<label htmlFor="file-upload" className="upload-button">
@@ -41,7 +41,8 @@ export default function RevitPage() {
 						width={80}
 						height={80}
 					/>
-					<div>Upload your <span style={{ fontWeight: 'bold' }}>pdf</span> file</div>
+		
+					<p className="upload-text">upload your <span style={{ fontWeight: 'bold' }}>pdf</span> file</p>
 				</label>
 			</div>
 

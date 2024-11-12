@@ -12,6 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: "JetBrains Mono", monospace;
+  color: #d4d4d4;
   background: rgb(38, 37, 37);
   background: linear-gradient(45deg, rgba(38, 37, 37, 1) 30%, rgba(78, 78, 78, 1) 100%);
 }
@@ -23,8 +25,6 @@ body {
   align-items: center;
   padding: 2em;
   height: inherit;
-  color: #d4d4d4;
-  font-family: "JetBrains Mono", monospace;
   overflow: hidden;
 }
 
@@ -62,11 +62,21 @@ body {
   color: #757575;
   text-decoration: none;
   margin-top: 1em;
-  transition: color 0.3s;
+  transition: ease-in-out .3s;
 }
 
-.continue:hover {
-  color: #ffffff;
+.logo {
+  transition: ease-in-out .3s;
+}
+
+.continue-box:hover {
+  .continue {
+    color: #ffffff;
+  }
+
+  .logo {
+    transform: scale(1.05);
+  }
 }
 
 .toggle-switch {
