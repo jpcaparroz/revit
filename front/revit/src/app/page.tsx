@@ -1,23 +1,34 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import "./assets/css/index.css";
 import Link from "next/link";
-import { LogoTheme1 } from './components/images';
-
 
 export default function HomePage() {
+
   return (
     <div className="home">
-      <h1>REVIT</h1>
-      <p>loopdevs documents ai</p>
 
-      <img src= { LogoTheme1 } alt="Loopdevs logo" />
-
+      <div className="title-box">
+        <h1 className="title">REVIT</h1>
+        <p className="sub-title">loopdevs documents ai</p>
+      </div>
 
       <br />
 
-      <Link href={"/revit"}>
-        click to continue
-      </Link>
+      <div className="continue-box">
+        <Link href="/pages/revit">
+          <Image
+            src="/images/logo-theme-1.svg"
+            className="logo"
+            alt="Loopdevs logo"
+            width={150}
+            height={150}
+            />
+        </Link>
+
+        <Link href={"/pages/revit"} className="continue">
+          click to continue
+        </Link>
+      </div>
     </div>
   );
 }
