@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  revit-back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /code
+    volumes:
+      - ./back/src:/code/src
+      - ./back/docs/requirements.txt:/code/requirements.txt
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_CONTAINER_NAME=${APP_CONTAINER_NAME}
+      - FASTAPI_APP=${FASTAPI_APP}
+      - FASTAPI_HOST=${FASTAPI_HOST}
+      - FASTAPI_PORT=${FASTAPI_PORT}
+      - FASTAPI_LOG_LEVEL=${FASTAPI_LOG_LEVEL}
+      - FASTAPI_RELOAD=${FASTAPI_RELOAD}
+      - FASTAPI_WORKERS=${FASTAPI_WORKERS}
+
+    command: python /code/src/main.py
