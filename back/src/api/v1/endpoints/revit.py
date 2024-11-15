@@ -1,5 +1,4 @@
 import time
-from typing import List
 from io import BytesIO
 
 from fastapi import HTTPException
@@ -30,13 +29,13 @@ async def summarize(file: UploadFile):
         
     try:
         revit = RevitAi()
-        summarize_result = revit.summarize(text)
+        chunk_count, summarize_result = revit.summarize_large_text(text)
+        #summarize_final_result = revit.summarize(summarize_result)
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             detail='Error on summarize PDF')
         
     end_time = time.time()  # Record the end time
-    # Calculate the duration
     duration_seconds = int(end_time - start_time)
     hours, remainder = divmod(duration_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
@@ -45,10 +44,11 @@ async def summarize(file: UploadFile):
     revit_dict = {
         "file_name": str(file.filename),
         "file_content": text,
-        "file_words_count": len(text),
+        "file_chars_count": len(text),
+        "file_chunks_count": chunk_count,
         "summary": summarize_result,
         "summarize_duration": duration,
-        "summarize_words_count": len(summarize_result)
+        "summarize_chars_count": len(summarize_result)
     }
     revit_schema = revit.revit_message(RevitBase(**revit_dict))
         
