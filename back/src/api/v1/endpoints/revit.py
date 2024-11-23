@@ -17,7 +17,7 @@ router = APIRouter()
 
 @router.post("/", status_code=status.HTTP_200_OK, response_model=RevitBase)
 async def summarize(file: UploadFile):
-    start_time = time.time()  # Record the start time
+    start_time = time.time()
 
     try:
         file_read = BytesIO(await file.read())
@@ -35,7 +35,7 @@ async def summarize(file: UploadFile):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             detail='Error on summarize PDF')
         
-    end_time = time.time()  # Record the end time
+    end_time = time.time()
     duration_seconds = int(end_time - start_time)
     hours, remainder = divmod(duration_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
@@ -55,6 +55,41 @@ async def summarize(file: UploadFile):
     return revit_schema
 
 
+@router.post("/lorem_ipsum_test", status_code=status.HTTP_200_OK)
+async def get_lorem_ipsum_test(file: UploadFile):
+    start_time = time.time()
+
+    try:
+        file_read = BytesIO(await file.read())
+        pdf_reader = Pdf(file_read)
+        text: str = pdf_reader.read_pdf()
+    except:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail='Error on file read')
+        
+    revit = RevitAi()
+    end_time = time.time()  # Record the end time
+    duration_seconds = int(end_time - start_time)
+    hours, remainder = divmod(duration_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    duration = f"{hours:02}:{minutes:02}:{seconds:02}"
+    
+    lorem = await get_lorem_ipsum()
+    
+    revit_dict = {
+        "file_name": str(file.filename),
+        "file_content": text,
+        "file_chars_count": len(text),
+        "file_chunks_count": 3,
+        "summary": lorem,
+        "summarize_duration": duration,
+        "summarize_chars_count": len(lorem)
+    }
+    revit_schema = revit.revit_message(RevitBase(**revit_dict))
+
+    return revit_schema
+
+
 @router.post("/read_pdf", status_code=status.HTTP_200_OK)
 async def get_pdf_full_text(file: UploadFile):
     
@@ -68,7 +103,6 @@ async def get_pdf_full_text(file: UploadFile):
     return HttpDetail(detail=pdf_reader.read_pdf())
 
 
-@router.get("/lorem-ipsum", status_code=status.HTTP_200_OK)
 async def get_lorem_ipsum():
     
     lorem: str = """
@@ -81,4 +115,4 @@ async def get_lorem_ipsum():
     and more recently with desktop publishing software like Aldus PageMaker including 
     versions of Lorem Ipsum.
     """
-    return HttpDetail(detail=lorem)
+    return lorem

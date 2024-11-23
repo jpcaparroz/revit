@@ -1,10 +1,9 @@
-version: '3.8'
-
 services:
   revit-back:
+    container_name: revit-back
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DockerfileBack
     working_dir: /code
     volumes:
       - ./back/src:/code/src
@@ -19,5 +18,16 @@ services:
       - FASTAPI_LOG_LEVEL=${FASTAPI_LOG_LEVEL}
       - FASTAPI_RELOAD=${FASTAPI_RELOAD}
       - FASTAPI_WORKERS=${FASTAPI_WORKERS}
-
     command: python /code/src/main.py
+
+  revit-front:
+    container_name: revit-front
+    build:
+      context: ./front/revit
+      dockerfile: DockerfileFront
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front/revit:/app
+      - /app/node_modules
+    command: npm start
