@@ -14,6 +14,10 @@ Revit: The document AI
     python .\back\src\main.py
 
 
+##### Start docker compose
+    docker-compose up --build
+
+
 #### .env file (must be on root directory)
     APP_CONTAINER_NAME=api_app          # [string] App conatiner name
     FASTAPI_APP=main:app                # [string] Main route
