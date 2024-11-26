@@ -48,32 +48,18 @@ class RevitAi:
         """
         Separa o texto em pedacos caso ele seja maior que 1500 ou por paragrafos.
         """
-        paragraphs = text.split('\n')  # Dividindo por parágrafos
+        paragraphs = text.split('. ')  # Dividindo por pontos
+        chunk_size = len(paragraphs)
 
-        chunk_size = 0
-        chunks = []
-        current_chunk = []
-
-        for paragraph in paragraphs:
-            current_chunk.append(paragraph)
-            chunk_size += len(paragraph)
-
-            if chunk_size > 1500:  # Ajuste o limite conforme necessário
-                chunks.append("\n".join(current_chunk))
-                current_chunk = []
-                chunk_size = 0
-
-        if current_chunk:
-            chunks.append("\n".join(current_chunk))
-
-        return chunks
+        return chunk_size, paragraphs
 
 
-    def summarize(self, text: str) -> str:
+    def summarize(self, max_length: int, text: str) -> str:
         """
         Resume o texto enviado.
         """
-        result = self.summarizer([WHITESPACE_HANDLER(text)], max_length=130, min_length=50, do_sample=False)
+        result = self.summarizer(WHITESPACE_HANDLER(text), max_length=max_length, min_length=50, do_sample=False)
+        
         return result[0]["summary_text"]
 
 
@@ -81,18 +67,14 @@ class RevitAi:
         """
         Resume textos maiores separando-o em pedacos.
         """
-        chunks: list = self.chunk_text(text)
-        summaries: list = []
-        chunk_count: int = 0
+        chunk_count, treated_text = self.chunk_text(text)
+        summaries = []
         
-        if len(chunks) > 5:
-            for chunk in chunks:
-                summary = self.summarize(chunk)
-                summaries.append(summary)
-                chunk_count += 1
-                
-            final_summary = self.summarize(" ".join(summaries))
-        else:
-            final_summary = self.summarize(text)
+        for chunk in treated_text:
+            summary = self.summarize(len(chunk), chunk)
+            summaries.append(summary)
+            chunk_count += 1
+            
+        final_summary = " ".join(summaries)
 
         return chunk_count, final_summary
