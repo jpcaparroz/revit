@@ -1,112 +1,140 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: "JetBrains Mono", monospace;
-  color: #d4d4d4;
-  background: rgb(38, 37, 37);
-  background: linear-gradient(45deg, rgba(38, 37, 37, 1) 30%, rgba(78, 78, 78, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "JetBrains Mono", monospace;
+    color: #d4d4d4;
+    background: linear-gradient(
+        45deg,
+        rgba(38, 37, 37, 1) 30%,
+        rgba(78, 78, 78, 1) 100%
+    );
 }
 
 .home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
-  height: inherit;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    height: inherit;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+    color: #d4d4d4;
+    background: linear-gradient(
+        45deg,
+        rgba(38, 37, 37, 1) 30%,
+        rgba(78, 78, 78, 1) 100%
+    );
 }
 
+/* .home.light {
+    color: #9457f2;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(218, 218, 218, 1) 87%
+    );
+} */
+
 .title-box {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0.5em;
-  padding-bottom: 8em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5em;
+    padding-bottom: 8em;
 }
 
 .continue-box {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0.5em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5em;
 }
 
 .title {
-  font-size: 7em;
-  font-weight: bold;
-  font-style: italic;
-  color: #f2f2f2;
+    font-size: 7em;
+    font-weight: bold;
+    font-style: italic;
+    color: #f2f2f2;
 }
 
 .sub-title {
-  font-size: 1em;
-  font-style: oblique;
-  color: #a6a6a6;
-  letter-spacing: 0.1em;
+    font-size: 1em;
+    font-style: oblique;
+    color: #a6a6a6;
+    letter-spacing: 0.1em;
 }
 
 .continue {
-  font-size: 0.9em;
-  color: #757575;
-  text-decoration: none;
-  margin-top: 1em;
-  transition: ease-in-out .3s;
+    font-size: 0.9em;
+    color: #757575;
+    text-decoration: none;
+    margin-top: 1em;
+    transition: ease-in-out 0.3s;
 }
 
 .logo {
-  transition: ease-in-out .3s;
+    transition: ease-in-out 0.3s;
+    filter: drop-shadow(
+        rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px
+    );
 }
 
 .continue-box:hover {
-  .continue {
-    color: #ffffff;
-  }
+    .continue {
+        color: #ffffff;
+    }
 
-  .logo {
-    transform: scale(1.05);
-  }
+    .logo {
+        transform: scale(1.05);
+    }
 }
 
 .toggle-switch {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 40px;
-  height: 20px;
-  background-color: #333;
-  border-radius: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 2px;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 40px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 2px;
 }
 
 .toggle-switch::before {
-  content: '';
-  width: 16px;
-  height: 16px;
-  background-color: #f2f2f2;
-  border-radius: 50%;
-  transition: transform 0.3s;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    transition: transform 0.3s;
 }
 
 .toggle-switch.active::before {
-  transform: translateX(20px);
-  background-color: #4caf50;
+    transform: translateX(20px);
+    background-color: #4caf50;
 }
 
 .toggle-switch:hover {
-  background-color: #444;
+    background-color: #444;
 }

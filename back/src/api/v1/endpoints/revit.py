@@ -1,9 +1,7 @@
 import time
 from io import BytesIO
 
-from fastapi import HTTPException
-from fastapi import UploadFile
-from fastapi import APIRouter
+from fastapi import HTTPException, File, UploadFile, APIRouter
 from fastapi import status
 
 from schemas.generic_schema import HttpDetail
@@ -91,16 +89,17 @@ async def get_lorem_ipsum_test(file: UploadFile):
 
 
 @router.post("/read_pdf", status_code=status.HTTP_200_OK)
-async def get_pdf_full_text(file: UploadFile):
+async def get_pdf_full_text(file: UploadFile = File(...)):
     
     try:
         file_read = BytesIO(await file.read())
         pdf_reader = Pdf(file_read)
+        content = pdf_reader.read_pdf()
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             detail='Erro on file read')
     
-    return HttpDetail(detail=pdf_reader.read_pdf())
+    return HttpDetail(detail=content)
 
 
 async def get_lorem_ipsum():

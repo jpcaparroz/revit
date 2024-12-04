@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -22,7 +14,6 @@ body {
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    color: #d4d4d4;
     font-family: "JetBrains Mono", monospace;
     overflow: hidden;
 }
@@ -34,40 +25,16 @@ body {
     padding-top: 1em;
 }
 
-.upload-box {
+.revit-box {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1.2em;
-    margin-top: auto;
-    margin-bottom: auto; 
-    transition: color 0.3s;
-    color: #757575;
+    margin: 5% 15%;
+    max-width: 50%;
+    padding: 45px;
+    border-radius: 35px;
+    overflow: scroll;
+    scroll-padding: 45px;
 }
 
-.upload-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.upload {
-    transition: ease-in-out .3s;
-}
-
-.upload-text {
-    transition: ease-in-out .3s;
-}
-
-.upload-button:hover {
-    .upload-text {
-        color: #ffffff;
-    }
-
-    .upload {
-        transform: scale(1.05);
-    }
+::-webkit-scrollbar{
+    transform: translateX(-40px);
 }
