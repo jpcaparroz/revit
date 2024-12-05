@@ -4,12 +4,14 @@ import re
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'utils')))
 
-from transformers import pipeline
+import nltk
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
 from schemas.revit_schema import RevitBase
 
-MODEL_NAME: str = "csebuetnlp/mT5_multilingual_XLSum"
-WHITESPACE_HANDLER = lambda k: re.sub(r'\s+', ' ', re.sub('\n+', ' ', k.strip()))
+
+MODEL_NAME: str = "unicamp-dl/ptt5-base-portuguese-vocab"
+
 
 class RevitAi:
     
@@ -17,8 +19,17 @@ class RevitAi:
         """
         Inicializa o pipeline de resumo usando o Hugging Face.
         """
-        self.summarizer = pipeline("summarization", model=MODEL_NAME)
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+        model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
+        self.summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
 
+
+    def clean_text(self, text: str) -> str:
+        """
+        Remove quebras de linha e espaços extras.
+        """
+        return re.sub(r'\s+', ' ', text.replace('\n', ' ').strip())
+    
 
     def revit_message(self, revit: RevitBase) -> str:
         """
@@ -44,37 +55,51 @@ class RevitAi:
         return revit
 
 
-    def chunk_text(self, text: str):
-        """
-        Separa o texto em pedacos caso ele seja maior que 1500 ou por paragrafos.
-        """
-        paragraphs = text.split('. ')  # Dividindo por pontos
-        chunk_size = len(paragraphs)
-
-        return chunk_size, paragraphs
-
-
-    def summarize(self, max_length: int, text: str) -> str:
-        """
-        Resume o texto enviado.
-        """
-        result = self.summarizer(WHITESPACE_HANDLER(text), max_length=max_length, min_length=50, do_sample=False)
+    def chunk_text(self, text: str) -> list:
+        # Tokeniza o texto em sentenças usando o NLTK para o idioma português
+        sentences = nltk.sent_tokenize(text, language="portuguese")
         
+        # Calcula o número de sentenças por chunk
+        chunk_size = len(sentences) // 3
+        chunks = []
+
+        # Divide o texto em partes
+        for i in range(3):
+            start_index = i * chunk_size
+            end_index = (i + 1) * chunk_size if i != 3 - 1 else len(sentences)
+            chunk = ' '.join(sentences[start_index:end_index])
+            chunks.append(chunk)
+
+        print(chunks)
+        return len(chunks), chunks
+
+
+
+    def summarize(self, text: str, max_length: int = None, min_length: int = None) -> str:
+        """
+        Resume o texto ajustando dinamicamente o comprimento.
+        """
+        input_length = len(text.split())
+        if not max_length:
+            max_length = min(300, max(50, int(input_length * 0.5)))  # Máximo: 50% do texto original ou até 300 tokens.
+        if not min_length:
+            min_length = max(30, int(max_length * 0.3))  # Mínimo: 30% do `max_length`.
+
+        result = self.summarizer(
+            text,
+            max_length=max_length,
+            min_length=min_length,
+            do_sample=False,
+        )
         return result[0]["summary_text"]
+
 
 
     def summarize_large_text(self, text: str) -> str:
         """
-        Resume textos maiores separando-o em pedacos.
+        Processa textos longos dividindo em partes menores e gerando um resumo coeso.
         """
-        chunk_count, treated_text = self.chunk_text(text)
-        summaries = []
-        
-        for chunk in treated_text:
-            summary = self.summarize(len(chunk), chunk)
-            summaries.append(summary)
-            chunk_count += 1
-            
-        final_summary = " ".join(summaries)
-
+        chunk_count, chunks = self.chunk_text(self.clean_text(text))
+        summaries = [self.summarize(chunk) for chunk in chunks]
+        final_summary = self.summarize(' '.join(summaries))
         return chunk_count, final_summary
