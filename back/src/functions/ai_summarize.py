@@ -90,5 +90,4 @@ class RevitAi:
 
         # Realiza uma segunda rodada de sumarização no resumo combinado
         final_summary = ' '.join(summaries)
-        final_summary = self.summarize(final_summary, max_length=150, min_length=50)
         return chunk_count, final_summary
