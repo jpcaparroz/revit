@@ -4,7 +4,6 @@ import re
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'utils')))
 
-import nltk
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from schemas.revit_schema import RevitBase
