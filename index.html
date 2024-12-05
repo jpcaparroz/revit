@@ -1,0 +1,942 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The loopdevs document ai">
+      
+      
+      
+        <link rel="canonical" href="https://jpcaparroz.github.io/revit/">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Revit</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#revit" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="." title="Revit" class="md-header__button md-logo" aria-label="Revit" data-md-component="logo">
+      
+  <img src="assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Revit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Revit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2C5.13 2 2 5.13 2 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7M6 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H6zm13-8h-2l-3.2 9h1.9l.7-2h3.2l.7 2h1.9zm-2.15 5.65L18 15l1.15 3.65z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Portugues
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Revit
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Revit" class="md-nav__button md-logo" aria-label="Revit" data-md-component="logo">
+      
+  <img src="assets/images/logo.svg" alt="logo">
+
+    </a>
+    Revit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Revit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Revit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUÇÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      DESENVOLVIMENTO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      MODELO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-da-informacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      FLUXO DA INFORMACÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribuicao-codigo-fonte" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONTRIBUIÇÃO / CÓDIGO FONTE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONCLUSÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      REFERÊNCIAS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUÇÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      DESENVOLVIMENTO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      MODELO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-da-informacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      FLUXO DA INFORMACÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribuicao-codigo-fonte" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONTRIBUIÇÃO / CÓDIGO FONTE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONCLUSÃO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      REFERÊNCIAS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="revit">Revit</h1>
+<h6>The loopdevs document ai</h6>
+
+<hr />
+<h2 id="fluxo">Fluxo</h2>
+<p>Fluxo da arquitetura do Revit:</p>
+<pre class="mermaid"><code>architecture-beta
+    group front(cloud)[Front End]
+    group back(cloud)[Back End]
+
+    service react(server)[React with Nextjs] in front
+
+    service fastapi(server)[FastAPI] in back
+    service transformer(server)[Transformer] in back
+    service model(database)[Model mT5_multilingual_XLSum] in back
+    service python(server)[Python] in back
+
+    service user(internet)[Usuario]
+
+
+    user:R &lt;--&gt; L:react
+
+    react:R &lt;--&gt; L:fastapi
+    fastapi:R &lt;--&gt; L:python
+    python:R &lt;--&gt; L:transformer
+    transformer:R &lt;--&gt; L:model
+
+
+</code></pre>
+<h2 id="_1"></h2>
+<ol>
+<li>
+<h2 id="introducao"><a name="_toc393284199"></a><a name="_toc182333996"></a><strong>INTRODUÇÃO</strong></h2>
+</li>
+<li><a name="_toc182333997"></a><a name="_toc1563775225"></a><strong>INTRODUÇÃO EM LINGUA NATIVA</strong></li>
+</ol>
+<p>Com o crescente volume de informações disponíveis em formato digital, surge a necessidade de ferramentas que facilitem o acesso rápido e eficiente ao conteúdo essencial. Pensando nisso, o projeto Revit foi desenvolvido como uma solução inovadora voltada para resumir arquivos PDF de maneira automatizada. Utilizando técnicas avançadas de inteligência artificial e processamento de linguagem natural, o Revit transforma documentos extensos em resumos curtos e claros, facilitando a compreensão e economizando tempo para os usuários. Este trabalho explora o desenvolvimento do Revit, destacando sua arquitetura e funcionalidades.</p>
+<p><strong>PALAVRAS-CHAVE:</strong> Revit – resumir PDF – economizar tempo – solução inovadora – inteligência artificial</p>
+<ol>
+<li><a name="_toc182333998"></a><a name="_toc1594747007"></a><strong>INTRODUÇÃO EM LINGUA ESTRANGEIRA</strong></li>
+</ol>
+<p>With the increasing volume of information available in digital format, there is a growing need for tools that allow quick and efficient access to essential content. With this in mind, the Revit project was developed as an innovative solution for automated PDF summarization. Utilizing advanced artificial intelligence and natural language processing techniques, Revit transforms lengthy documents into concise and clear summaries, enhancing comprehension and saving user's time. This paper explores the development of Revit, highlighting its architecture and functionalities</p>
+<p><strong>KEYWORDS:</strong> Revit – PDF summarization – saving time – innovative solution – artificial intelligence</p>
+<ol>
+<li>
+<h2 id="desenvolvimento"><a name="_toc487280376"></a><a name="_toc182333999"></a><strong>DESENVOLVIMENTO</strong></h2>
+</li>
+</ol>
+<p>O Revit foi um desafio muito legal de se concluir. Aprendizado e trabalho em equipe resume todo esforço gasto no projeto. Abaixo, citamos detalhadamente toda as etapas desse projeto.</p>
+<h2 id="_2"></h2>
+<ol>
+<li><a name="_toc182334000"></a><a name="_toc1803384557"></a><strong>TECNOLOGIAS USADAS</strong></li>
+</ol>
+<hr />
+<p>Este projeto utiliza uma combinação de tecnologias para entregar uma solução robusta e escalável. A arquitetura é dividida em três componentes principais: back-end, front-end e documentação, cada um com ferramentas específicas que otimizam o desenvolvimento, a execução e a apresentação do projeto. Abaixo, detalhamos as escolhas tecnológicas de cada parte e o motivo de sua seleção.</p>
+<ol>
+<li><strong>Back-End</strong></li>
+</ol>
+<p>O back-end é desenvolvido em <strong>Python</strong> e utiliza várias bibliotecas especializadas para oferecer uma API eficiente e de alta performance para processar documentos em PDF e gerar resumos. Fora as bibliotecas padrões já fornecidas na instalação do python, foram utilizadas:</p>
+<ol>
+<li>
+<p><strong>FastAPI:</strong> FastAPI é o framework principal usado para criar a API do projeto. Ele é conhecido pela sua alta performance e suporte nativo para operações assíncronas, o que permite que o sistema lide com múltiplas requisições simultâneas de forma eficiente. A FastAPI também facilita a criação de endpoints bem documentados, tornando a integração com o front end mais simples e segura.</p>
+</li>
+<li>
+<p><strong>Transformers:</strong> A biblioteca transformers, desenvolvida pela <strong>Hugging Face</strong>, é utilizada para trabalhar com modelos de aprendizado profundo, como o <strong>mT5</strong>. Essa biblioteca permite fácil integração com modelos <strong>pré-treinados</strong> para tarefas de <strong>NLP</strong> (Processamento de Linguagem Natural), incluindo sumarização. A utilização de transformers possibilita o processamento e a geração de resumos de forma eficiente e com alto nível de precisão.</p>
+</li>
+<li>
+<p><strong>Datasets:</strong> Também da <strong>Hugging Face</strong>, a biblioteca datasets oferece acesso a uma vasta gama de conjuntos de dados, incluindo o <strong>XLSum</strong>, que é essencial para treinar e avaliar o modelo de sumarização. Essa biblioteca permite carregar e manipular conjuntos de dados de maneira eficiente, o que é crucial para o desempenho do sistema de resumo.</p>
+</li>
+<li>
+<p><strong>TensorFlow:</strong> TensorFlow é uma das bibliotecas de aprendizado de máquina mais populares, especialmente para treinamento e implementação de modelos de deep <a name="_int_l1nfmp4z"></a>learning. No projeto, TensorFlow é utilizado para ajustar e otimizar o modelo <strong>transformer</strong>, garantindo que o modelo possa realizar inferências rápidas e gerar resumos de qualidade.</p>
+</li>
+<li>
+<p><strong>PyPDF2:</strong> A biblioteca PyPDF2 é utilizada para manipular arquivos PDF. Ela permite extrair o texto dos documentos, o que é o primeiro passo no fluxo de processamento antes da geração do resumo. A escolha do PyPDF2 se deve à sua <strong>simplicidade</strong> e <strong>eficácia</strong> na manipulação de PDFs, oferecendo funções para leitura e manipulação de páginas e texto com facilidade.</p>
+</li>
+<li>
+<p><strong>Front-End</strong></p>
+</li>
+</ol>
+<p>O front-end é desenvolvido com <strong>React</strong> e utiliza <strong>TypeScript</strong> e <strong>Next.js</strong> para criar uma interface de usuário dinâmica, responsiva e escalável.</p>
+<ol>
+<li>
+<p><strong>React:</strong> React é uma das bibliotecas mais populares para o desenvolvimento de interfaces de usuário. Ele permite a criação de componentes reutilizáveis e facilita o gerenciamento do estado da aplicação. No projeto, React permite criar uma interface intuitiva, onde os usuários podem fazer o upload de arquivos PDF e visualizar os resumos gerados.</p>
+</li>
+<li>
+<p><strong>TypeScript:</strong> A escolha por TypeScript em conjunto com React traz benefícios significativos em termos de <strong>segurança</strong> e <strong>manutenção</strong> do código. TypeScript adiciona <a name="_int_cnnth8eh"></a><strong>tipagem estática</strong> a JavaScript, o que ajuda a evitar erros comuns durante o desenvolvimento e facilita a escalabilidade da aplicação.</p>
+</li>
+<li>
+<p><strong>Next.js:</strong> Next.js é um <a name="_int_u8p7nj3m"></a><strong>framework</strong> React que facilita o desenvolvimento de aplicações web com renderização no lado do servidor (Server Side Rendering, SSR) e geração de páginas estáticas. Ele oferece uma excelente otimização de performance e SEO, além de suportar a criação de rotas dinâmicas, o que é útil para organizar as diferentes páginas da aplicação. No projeto, Next.js permite uma experiência de usuário rápida e otimizada.</p>
+</li>
+<li>
+<p><strong>Documentação</strong></p>
+</li>
+</ol>
+<p>A documentação é uma parte fundamental do projeto, facilitando o entendimento do sistema para novos desenvolvedores e usuários. Para isso, foram utilizadas duas ferramentas principais:</p>
+<ol>
+<li>
+<p><strong>Word:</strong> O Microsoft Word é utilizado para a elaboração de documentação formal e detalhada. Também foi o software principal para a entrega do projeto seguindo as normas ABNT. </p>
+</li>
+<li>
+<p><strong>MkDocs</strong>: MkDocs é uma ferramenta de código aberto para geração de documentação em <strong>sites estáticos</strong>. Ele permite criar documentação amigável e acessível, com um layout moderno e navegação fácil. Foi escolhido para ficar como documentação disponível no próprio repositório do código fonte do Revit.</p>
+</li>
+<li>
+<h2 id="modelo"><a name="_toc916808632"></a><a name="_toc182334001"></a><strong>MODELO</strong></h2>
+</li>
+</ol>
+<h2 id="_3"></h2>
+<p>A escolha de um modelo adequado para a tarefa de resumo automático de textos foi um passo crucial na construção de um sistema eficiente e preciso. No contexto da arquitetura apresentada, o modelo <a name="_int_g5uluo5a"></a><strong>csebuetnlp/mT5_multilingual_XLSum</strong> foi selecionado devido à sua capacidade de lidar com múltiplos idiomas e sua especialização em sumarização de textos longos. Este modelo combina a robustez do <strong>transformer mT5</strong> com o extenso dataset <strong>XLSum</strong>, características que justificam seu uso em uma aplicação que visa fornecer resumos concisos e contextualizados de documentos PDF. </p>
+<p>O <strong>mT5</strong> é uma variante multilíngue do modelo <strong>T5</strong> (Text-To-Text Transfer Transformer), que transforma qualquer tarefa de processamento de linguagem em um problema de texto para texto. Essa abordagem permite que o modelo <strong>mT5</strong> execute diversas tarefas de <strong>NLP</strong>, como tradução, resposta a perguntas e, especialmente, <strong>sumarização</strong>, sem a necessidade de ajustes específicos para cada idioma.</p>
+<p>A estrutura do <strong>mT5</strong> é baseada na arquitetura Transformer, que utiliza mecanismos de atenção para capturar relações complexas entre palavras em uma frase e ao longo de frases em um texto. Esse modelo é capaz de processar textos longos e extrair informações contextuais ricas, o que é essencial para produzir resumos que preservem o significado do documento original. Para uma aplicação que lida com documentos em português e outros idiomas, o <strong>mT5</strong> é ideal, pois foi treinado para ser eficaz em uma grande variedade de línguas, garantindo flexibilidade e precisão na tarefa de sumarização.</p>
+<p>O <strong>XLSum</strong> é um <strong>dataset</strong> extenso e diversificado, desenvolvido para atender às necessidades de sumarização em múltiplos idiomas. Este dataset inclui dados de notícias e artigos informativos em mais de quarenta idiomas, incluindo o português, o que permite ao modelo aprender padrões linguísticos e contextuais específicos de cada idioma. A inclusão do <strong>XLSum</strong> no treinamento do <strong>mT5</strong> permitiu que o modelo se adaptasse melhor a <strong>variações linguísticas</strong> e culturais, essenciais para produzir resumos que capturem o tom e a intenção originais do texto.</p>
+<p>No contexto deste sistema, o uso do <strong>XLSum</strong> aprimora a capacidade do modelo de gerar resumos de alta qualidade para documentos PDF em português. Esse <a name="_int_kczspoqu"></a>aspecto é particularmente relevante, pois garante que o modelo não apenas traduza as ideias principais, mas também respeite nuances linguísticas e contextuais, tornando os resumos mais relevantes e compreensíveis para os usuários finais.</p>
+<p>A combinação do modelo <strong>mT5</strong> com o dataset <strong>XLSum</strong> resultou no modelo <strong>csebuetnlp/mT5_multilingual_XLSum</strong>, uma versão especializada para tarefas de sumarização em múltiplos idiomas. Esse modelo oferece vários benefícios específicos para o sistema de resumos:</p>
+<ul>
+<li><strong>Multilinguismo:</strong> Ao utilizar o <strong>mT5</strong> e o <strong>XLSum,</strong> o modelo é capaz de gerar resumos em mais de quarenta idiomas, o que o torna adequado para usuários de diferentes regiões e origens linguísticas.</li>
+<li><strong>Precisão Contextual:</strong> O modelo não apenas sintetiza o conteúdo, mas também mantém a precisão contextual, reproduzindo fielmente as principais ideias do documento original.</li>
+<li>
+<p><strong>Adaptabilidade a Textos Longos:</strong> Projetado para documentos extensos e informativos, o <strong>csebuetnlp/mT5_multilingual_XLSum</strong> consegue lidar com textos complexos, mantendo a coerência no resumo final.</p>
+</li>
+<li>
+<p><code></code><strong><a name="_toc182334002"></a>TREINAMENTO DO MODELO</strong></p>
+</li>
+</ul>
+<hr />
+<p>O modelo foi treinado com o datase <strong>xlsum</strong> por <strong>csebuetnlp.</strong> Dataset completo e um ponto muito importate: Sua quantidade extensa de linguages (ao todo 45). A maior origem de seus dados é a própria BBC (site de noticias).</p>
+<p>Os campos contidos em seus dados são:</p>
+<ul>
+<li>Id = Código da reportagem/noticia</li>
+<li>url = Caminho da web para reportagem/noticia</li>
+<li>title = Título da reportagem/noticia</li>
+<li>summary = Resumo da reportagem/noticia</li>
+<li>
+<p>text = Reportagem/noticia</p>
+</li>
+<li>
+<h2 id="fluxo-da-informacao"><a name="_toc1832265406"></a><a name="_toc182334003"></a><strong>FLUXO DA INFORMACÃO</strong></h2>
+<p>##
+A <a href="#bookmark1">arquitetura</a> apresentada abaixo busca fornecer um serviço de resumo de textos a partir de arquivos PDF, utilizando um modelo de aprendizado capaz de processar documentos em diversas línguas. O fluxo divide-se em duas principais camadas: o <strong>Front-End</strong> e o <strong>Back-End</strong>, cada uma com responsabilidades específicas que, em conjunto, permitem ao usuário interagir e obter resumos precisos e relevantes. A seguir, detalhamos cada componente.</p>
+</li>
+</ul>
+<p>No <strong>front-end</strong>, temos uma interface de usuário desenvolvida com <strong>React</strong> em conjunto com o <strong>Next.js</strong>, uma estrutura que facilita a renderização de páginas no lado do servidor (SSR - Server Side Rendering), além de possibilitar a construção de aplicações web altamente responsivas e escaláveis. Este ambiente permite que o usuário faça upload de arquivos PDF e envie as requisições para o back-end, buscando uma experiência intuitiva e rápida.</p>
+<p>O <strong>back-end,</strong> por sua vez, é composto por uma série de camadas especializadas, cada uma desempenhando uma função crítica para o funcionamento do sistema de resumo. Esse módulo é desenvolvido em <strong>Python</strong> e utiliza <strong>FastAPI</strong> como <strong>framework</strong> principal para a construção de <strong>APIs RESTful</strong>, o que facilita a comunicação entre o front-end e as camadas de processamento e modelagem. A <strong>FastAPI</strong> é uma escolha ideal para este tipo de aplicação devido à sua alta performance e suporte a operações assíncronas, o que permite o manuseio eficiente de múltiplas requisições simultâneas.</p>
+<p>No núcleo do processamento de linguagem natural, a arquitetura utiliza a tecnologia <strong>Transformer</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, que é o padrão atual para modelos de aprendizado profundo em tarefas de <strong>NLP</strong> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>(Natural Language Processing). </p>
+<p>O modelo específico utilizado para o resumo é o <strong>mT5</strong> (Multilingual Text-To-Text Transfer Transformer), uma variante multilíngue do <strong>T5</strong> (Text-To-Text Transfer Transformer), que é treinado em uma vasta gama de idiomas e capaz de realizar várias tarefas de <strong>NLP</strong>, incluindo sumarização. O <strong>dataset XLSum</strong>, adaptado para o <strong>português</strong> e <strong>outros idiomas</strong>, é utilizado para o treinamento do modelo, garantindo que os resumos produzidos sejam adequados a contextos e nuances linguísticas variadas. A escolha deste modelo e dataset é estratégica para maximizar a precisão e relevância dos resumos gerados, independentemente do idioma do documento.</p>
+<p><a name="bookmark1"></a><a name="_toc182333981"></a><em>Figura 2 - Fluxo</em></p>
+<h2 id="_4"></h2>
+<ol>
+<li><a name="_toc182334004"></a><a name="_toc1712057182"></a><strong>BACKEND</strong></li>
+</ol>
+<hr />
+<p>Como a biblioteca escolhida foi a <strong>FastAPI</strong>, o desenvolvimento da <strong>API</strong> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>e <strong>Endpoints</strong><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>** foi acelerado e muito conciso.</p>
+<p>No geral, apenas uma rota foi necessária para a criação do Revit. Basicamente a rota serviu para exercer as seguintes funções:</p>
+<ol>
+<li><strong>Receber</strong> um arquivo .pdf</li>
+<li><strong>Ler</strong> o arquivo</li>
+<li><strong>Resumir</strong> o arquivo</li>
+<li><strong>Retornar</strong> o resumo e seus detalhes</li>
+</ol>
+<p><a name="_toc182333982"></a><em>Figura 3 - FastAPI</em></p>
+<ol>
+<li><a name="_toc182334005"></a><a name="_toc183835806"></a><strong>FRONTEND</strong></li>
+</ol>
+<hr />
+<p>O <a name="_int_hnjeivvz"></a><strong>front-end</strong> se tornou uma tarefa menos árdua devido a todo detalhamento/desenho previamente feito utilizando a ferramenta <strong>figma</strong><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup><strong>.</strong></p>
+<p>Ao todo foram desenhadas 6 telas (contando com seus respectivos temas: claro, escuro).</p>
+<p>O usuário tem as possíveis <strong>5</strong> ações dentro do <strong>Revit</strong>:</p>
+<ul>
+<li><strong>Avançar</strong> para a página de upload do arquivo</li>
+<li><strong>Realizar</strong> upload do arquivo</li>
+<li><strong>Alterar</strong> o tema</li>
+<li><strong>Navegar</strong> pela resposta do resumo (caso ela ocupe um espaço maior do predefinido)</li>
+<li>
+<p><strong>Voltar</strong> para a home</p>
+</li>
+<li>
+<h2 id="contribuicao-codigo-fonte"><a name="_toc1166364700"></a><a name="_toc182334007"></a><strong>CONTRIBUIÇÃO / CÓDIGO FONTE</strong></h2>
+</li>
+</ul>
+<p>O Revit é uma aplicação de código aberto. Você pode contribuir e ver o código fonte do mesmo.</p>
+<p>Através do <a href="https://github.com/jpcaparroz/revit">repositório</a> você pode cessar o código fonte e também realizar uma contribuição através de um <strong>pull <a name="_int_i0munzpy"></a>request</strong>, ou até mesmo utilizar como base para um projeto pessoal através de um <a name="_int_vlgxv5zw"></a><strong>fork</strong>!</p>
+<ol>
+<li>
+<h2 id="conclusao"><a name="_toc1684588113"></a><a name="_toc182334008"></a><strong>CONCLUSÃO</strong></h2>
+</li>
+</ol>
+<p>Este trabalho apresentou o desenvolvimento de um sistema completo para geração de resumos automáticos de arquivos PDF, combinando tecnologias de ponta para atender a uma demanda crescente por soluções de processamento de linguagem natural (NLP). Através de uma arquitetura bem planejada, dividida em camadas de front-end, back-end e documentação, o sistema consegue oferecer resumos precisos e contextuais de documentos em múltiplos idiomas, proporcionando uma experiência prática e eficiente aos usuários.</p>
+<p>No back-end, o uso de Python junto com bibliotecas como FastAPI, transformers, datasets, TensorFlow e PyPDF2 foi essencial para criar uma API robusta, capaz de processar PDFs e gerar resumos com alta precisão. A escolha do modelo csebuetnlp/mT5_multilingual_XLSum, treinado para entender diferentes idiomas, possibilitou que o sistema atendesse a uma ampla gama de usuários, independentemente da língua dos documentos.</p>
+<p>O front-end, desenvolvido com React, TypeScript e Next.js, permitiu a criação de uma interface intuitiva e responsiva, onde os usuários podem facilmente interagir com o sistema, fazendo upload de documentos e visualizando os resumos. A renderização no lado do servidor oferecida pelo Next.js garante um desempenho otimizado e uma experiência rápida para o usuário.</p>
+<p>Em resumo, o trabalho conseguiu integrar tecnologias avançadas de NLP e desenvolvimento web em uma solução coesa, escalável e bem documentada. Esta plataforma de resumo automático de PDF tem potencial para ser aplicada em diversos contextos, como acadêmico e empresarial, auxiliando usuários a obter insights rápidos e precisos de documentos complexos. A solução apresentada oferece uma base sólida para futuras melhorias e extensões, como a adaptação para outros formatos de documentos ou a incorporação de novos modelos de NLP, consolidando o sistema como uma ferramenta poderosa para análise e compreensão de grandes volumes de informações textuais.</p>
+<h2 id="referencias"><a name="_toc1198925307"></a><a name="_toc182334009"></a><strong>REFERÊNCIAS</strong></h2>
+<p>“Fine-Tune a Pretrained Model.” Huggingface.co, <strong>HuggingFace</strong>, huggingface.co/docs/transformers/en/training. <strong>Accessed 10 Nov. 2024</strong>.</p>
+<p>csebuetnlp. “MT5-Multilingual-XLSum” Huggingface.co, <strong>HuggingFace</strong>, huggingface.co/csebuetnlp/mT5_multilingual_XLSum. <strong>Accessed 10 Nov. 2024.</strong></p>
+<p>Hasan, Tahmid, et al. “XL-Sum: Large-Scale Multilingual Abstractive Summarization for 44 Languages.” ACLWeb, A<strong>ssociation for Computational Linguistics</strong>, 1 Aug. 2021, aclanthology.org/2021.findings-acl.413. <strong>Accessed 10 Nov. 2024.</strong></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Biblioteca Python da HuggingFace&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Processamento de Linguagem Natural&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>APIs são mecanismos que permitem que dois componentes de software se comuniquem usando um conjunto de definições e protocolos&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Um <a name="_int_rkju8qz9"></a>endpoint de API é o ponto de comunicação entre uma interface de programação de aplicativos (API) e um cliente.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Figma é uma ferramenta de design versátil e bastante popular entre designers.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/jpcaparroz"  target="_blank" rel="noopener">Loopdevs</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jpcaparroz" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/joaooo0/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@joao.caparroz" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-dias-caparroz-2b19a1161/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "content.code.copy", "content.footnote.tooltips", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
