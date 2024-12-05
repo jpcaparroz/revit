@@ -4,25 +4,31 @@ import re
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'utils')))
 
-from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from schemas.revit_schema import RevitBase
 
-MODEL_NAME: str = "csebuetnlp/mT5_multilingual_XLSum"
-WHITESPACE_HANDLER = lambda k: re.sub(r'\s+', ' ', re.sub('\n+', ' ', k.strip()))
+
+MODEL_NAME = "csebuetnlp/mT5_multilingual_XLSum"
+
 
 class RevitAi:
-    
     def __init__(self):
         """
-        Inicializa o pipeline de resumo usando o Hugging Face.
+        Inicializa o modelo e o tokenizador do Hugging Face.
         """
-        self.summarizer = pipeline("summarization", model=MODEL_NAME)
+        self.tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
 
+    def clean_text(self, text: str) -> str:
+        """
+        Remove quebras de linha e espaços extras.
+        """
+        return re.sub(r'\s+', ' ', text.replace('\n', ' ').strip())
 
     def revit_message(self, revit: RevitBase) -> str:
         """
-        Prepara mensagem final de resposta da sumarizacão.
+        Prepara mensagem final de resposta da sumarização.
         """
         message: str = f"""
         Olá, eu sou o Revit! Construído pela Loopdevs para resumir seus PDFs.
@@ -43,38 +49,45 @@ class RevitAi:
         revit.revit_summary_message = message
         return revit
 
-
-    def chunk_text(self, text: str):
+    def chunk_text(self, text: str, max_tokens: int = 256):
         """
-        Separa o texto em pedacos caso ele seja maior que 1500 ou por paragrafos.
+        Divide o texto em chunks com base no número máximo de tokens permitido.
         """
-        paragraphs = text.split('. ')  # Dividindo por pontos
-        chunk_size = len(paragraphs)
+        tokens = self.tokenizer.encode(text, truncation=False)
+        chunks = [tokens[i:i + max_tokens] for i in range(0, len(tokens), max_tokens)]
 
-        return chunk_size, paragraphs
+        result = [self.tokenizer.decode(chunk, skip_special_tokens=True) for chunk in chunks]
+        return len(chunks), result
 
-
-    def summarize(self, max_length: int, text: str) -> str:
+    def summarize(self, text: str, max_length: int = None, min_length: int = None) -> str:
         """
-        Resume o texto enviado.
+        Resume o texto dado usando o modelo.
         """
-        result = self.summarizer(WHITESPACE_HANDLER(text), max_length=max_length, min_length=50, do_sample=False)
-        
-        return result[0]["summary_text"]
+        inputs = self.tokenizer.encode(text, return_tensors='pt', truncation=True, max_length=512)
 
+        # Define valores padrão para max_length e min_length
+        max_length = max_length or min(300, int(len(inputs[0]) * 0.5))
+        min_length = min_length or max(30, int(max_length * 0.3))
+
+        # Gera o resumo
+        summary_ids = self.model.generate(
+            inputs,
+            max_length=max_length,
+            min_length=min_length,
+            num_beams=5,
+            no_repeat_ngram_size=3,
+            early_stopping=True,
+        )
+        summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+        return summary
 
     def summarize_large_text(self, text: str) -> str:
         """
-        Resume textos maiores separando-o em pedacos.
+        Processa textos longos dividindo em chunks menores e gerando um resumo coeso.
         """
-        chunk_count, treated_text = self.chunk_text(text)
-        summaries = []
-        
-        for chunk in treated_text:
-            summary = self.summarize(len(chunk), chunk)
-            summaries.append(summary)
-            chunk_count += 1
-            
-        final_summary = " ".join(summaries)
+        chunk_count, chunks = self.chunk_text(self.clean_text(text))
+        summaries = [self.summarize(chunk) for chunk in chunks]
 
+        # Realiza uma segunda rodada de sumarização no resumo combinado
+        final_summary = ' '.join(summaries)
         return chunk_count, final_summary

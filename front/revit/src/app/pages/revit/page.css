@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(38, 37, 37);
+    background: linear-gradient(45deg, rgba(38, 37, 37, 1) 30%, rgba(78, 78, 78, 1) 100%);
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    font-family: "JetBrains Mono", monospace;
+    overflow: hidden;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 1em;
+}
+
+.revit-box {
+    display: flex;
+    margin: 5% 15%;
+    max-width: 50%;
+    padding: 45px;
+    border-radius: 35px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
