@@ -51,3 +51,28 @@ async def summarize(file: UploadFile):
     revit_schema = revit.revit_message(RevitBase(**revit_dict))
         
     return revit_schema
+
+@router.post("/test", status_code=status.HTTP_200_OK)
+async def chunk(file: UploadFile):
+
+    try:
+        file_read = BytesIO(await file.read())
+        pdf_reader = Pdf(file_read)
+        text: str = pdf_reader.read_pdf()
+    except:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail='Error on file read')
+    try:
+        revit = RevitAi()
+        chunk_count, chunk = revit.chunk_text(text)
+        
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail=f'Error on summarize PDF. Error {str(e)}')
+        
+    response = {"chunk_count": chunk_count, "chunks": chunk}
+
+    print(response)
+    
+    return response

@@ -5,35 +5,31 @@ import re
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'utils')))
 
 import nltk
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from schemas.revit_schema import RevitBase
 
 
-MODEL_NAME: str = "unicamp-dl/ptt5-base-portuguese-vocab"
+MODEL_NAME = "csebuetnlp/mT5_multilingual_XLSum"
 
 
 class RevitAi:
-    
     def __init__(self):
         """
-        Inicializa o pipeline de resumo usando o Hugging Face.
+        Inicializa o modelo e o tokenizador do Hugging Face.
         """
-        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-        model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
-        self.summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
-
+        self.tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
 
     def clean_text(self, text: str) -> str:
         """
         Remove quebras de linha e espaços extras.
         """
         return re.sub(r'\s+', ' ', text.replace('\n', ' ').strip())
-    
 
     def revit_message(self, revit: RevitBase) -> str:
         """
-        Prepara mensagem final de resposta da sumarizacão.
+        Prepara mensagem final de resposta da sumarização.
         """
         message: str = f"""
         Olá, eu sou o Revit! Construído pela Loopdevs para resumir seus PDFs.
@@ -54,52 +50,46 @@ class RevitAi:
         revit.revit_summary_message = message
         return revit
 
+    def chunk_text(self, text: str, max_tokens: int = 256):
+        """
+        Divide o texto em chunks com base no número máximo de tokens permitido.
+        """
+        tokens = self.tokenizer.encode(text, truncation=False)
+        chunks = [tokens[i:i + max_tokens] for i in range(0, len(tokens), max_tokens)]
 
-    def chunk_text(self, text: str) -> list:
-        # Tokeniza o texto em sentenças usando o NLTK para o idioma português
-        sentences = nltk.sent_tokenize(text, language="portuguese")
-        
-        # Calcula o número de sentenças por chunk
-        chunk_size = len(sentences) // 3
-        chunks = []
-
-        # Divide o texto em partes
-        for i in range(3):
-            start_index = i * chunk_size
-            end_index = (i + 1) * chunk_size if i != 3 - 1 else len(sentences)
-            chunk = ' '.join(sentences[start_index:end_index])
-            chunks.append(chunk)
-
-        print(chunks)
-        return len(chunks), chunks
-
-
+        result = [self.tokenizer.decode(chunk, skip_special_tokens=True) for chunk in chunks]
+        return len(chunks), result
 
     def summarize(self, text: str, max_length: int = None, min_length: int = None) -> str:
         """
-        Resume o texto ajustando dinamicamente o comprimento.
+        Resume o texto dado usando o modelo.
         """
-        input_length = len(text.split())
-        if not max_length:
-            max_length = min(300, max(50, int(input_length * 0.5)))  # Máximo: 50% do texto original ou até 300 tokens.
-        if not min_length:
-            min_length = max(30, int(max_length * 0.3))  # Mínimo: 30% do `max_length`.
+        inputs = self.tokenizer.encode(text, return_tensors='pt', truncation=True, max_length=512)
 
-        result = self.summarizer(
-            text,
+        # Define valores padrão para max_length e min_length
+        max_length = max_length or min(300, int(len(inputs[0]) * 0.5))
+        min_length = min_length or max(30, int(max_length * 0.3))
+
+        # Gera o resumo
+        summary_ids = self.model.generate(
+            inputs,
             max_length=max_length,
             min_length=min_length,
-            do_sample=False,
+            num_beams=5,
+            no_repeat_ngram_size=3,
+            early_stopping=True,
         )
-        return result[0]["summary_text"]
-
-
+        summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+        return summary
 
     def summarize_large_text(self, text: str) -> str:
         """
-        Processa textos longos dividindo em partes menores e gerando um resumo coeso.
+        Processa textos longos dividindo em chunks menores e gerando um resumo coeso.
         """
         chunk_count, chunks = self.chunk_text(self.clean_text(text))
         summaries = [self.summarize(chunk) for chunk in chunks]
-        final_summary = self.summarize(' '.join(summaries))
+
+        # Realiza uma segunda rodada de sumarização no resumo combinado
+        final_summary = ' '.join(summaries)
+        final_summary = self.summarize(final_summary, max_length=150, min_length=50)
         return chunk_count, final_summary
